@@ -15,15 +15,22 @@ class HadithAdapter(var listData : List<String>) : RecyclerView.Adapter<HadithAd
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HadithViewHolder {
-        var view = LayoutInflater.from(parent.context).inflate(R.layout.hadith_item,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.hadith_item,parent,false)
         return HadithViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: HadithViewHolder, position: Int) {
         holder.hadithNum.setText(listData.get(position))
+        holder.itemView.setOnClickListener {
+            onClickItem.onClickItem(listData.get(position) , position)
+        }
     }
 
     override fun getItemCount(): Int {
         return listData.size
+    }
+    lateinit var onClickItem : OnClickItemListener
+    interface OnClickItemListener{
+        fun onClickItem(item : String , poition : Int)
     }
 }

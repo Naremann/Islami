@@ -18,15 +18,18 @@ class HomeActivity : AppCompatActivity() {
                 menuItem->
             if (menuItem.itemId == R.id.ic_quran_nav) {
                 startFragment(QuranFragment())
+
             }
             else if (menuItem.itemId == R.id.ic_hadith_nav) {
                 startFragment(HadithFragment())
             }
             return@OnItemSelectedListener true
-
-
-
         })
+        bottomNavigationView.selectedItemId = R.id.ic_quran_nav
+
+
+
+
 
     }
 
