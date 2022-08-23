@@ -9,6 +9,7 @@ import com.example.islami.R
 import java.util.zip.Inflater
 
 class QuranAdapter(var listData : List<String>) : RecyclerView.Adapter<QuranAdapter.quranViewHolder>() {
+    lateinit var onItemClick : OnClickItemListener
 
 
     class quranViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -21,10 +22,19 @@ class QuranAdapter(var listData : List<String>) : RecyclerView.Adapter<QuranAdap
     }
 
     override fun onBindViewHolder(holder: quranViewHolder, position: Int) {
-        holder.suraName.setText(listData.get(position))
+        var suraNameItem : String = listData.get(position)
+        holder.suraName.setText(suraNameItem)
+        holder.itemView.setOnClickListener {
+            onItemClick.onItemClick(position, suraNameItem )
+        }
+
     }
+
 
     override fun getItemCount(): Int {
         return listData.size
+    }
+    interface OnClickItemListener{
+        fun onItemClick(position : Int , item : String)
     }
 }

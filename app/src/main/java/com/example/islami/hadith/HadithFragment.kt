@@ -1,5 +1,6 @@
 package com.example.islami.hadith
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.islami.R
-import com.example.islami.quran.QuranAdapter
 
 class HadithFragment : Fragment() {
     lateinit var recyclerView: RecyclerView
@@ -25,15 +25,36 @@ class HadithFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         createData()
+        //initRecycler()
         recyclerView = view.findViewById(R.id.recycler_hadith)
         adapter = HadithAdapter(list)
         recyclerView.adapter = adapter
+        adapter.onClickItem = object : HadithAdapter.OnClickItemListener{
+            override fun onClickItem(item: String, poition: Int) {
+                startHadithActivity(item , poition)
+            }
+
+        }
+
     }
+
+    private fun startHadithActivity(item : String , position : Int) {
+        var intent  = Intent(context , hadithDetailsActivity :: class.java)
+        intent.putExtra(Constants.Hadith_NAME , item)
+        intent.putExtra(Constants.HADITH_POSITION , position)
+        startActivity(intent)
+    }
+
+   /* private fun initRecycler() {
+        recyclerView = requireView().findViewById(R.id.recycler_hadith)
+        adapter = HadithAdapter(list)
+        recyclerView.adapter = adapter
+    }*/
 
     private fun createData() {
         list = mutableListOf()
 
-        for (i : Int in 0..40 step 1){
+        for (i : Int in 1..50 step 1){
             list.add("الحديث رقم $i")
 
 
