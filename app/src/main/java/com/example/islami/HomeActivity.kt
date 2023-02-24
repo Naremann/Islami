@@ -5,6 +5,8 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.islami.hadith.HadithFragment
 import com.example.islami.quran.QuranFragment
+import com.example.islami.radio.RadioFragment
+import com.example.islami.sebha.SebhaFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 
@@ -22,6 +24,12 @@ class HomeActivity : AppCompatActivity() {
             }
             else if (menuItem.itemId == R.id.ic_hadith_nav) {
                 startFragment(HadithFragment())
+            }
+            else if (menuItem.itemId == R.id.ic_sebha_nav) {
+                startFragment(SebhaFragment())
+            }
+            else if (menuItem.itemId == R.id.ic_radio_nav) {
+                startFragment(RadioFragment())
             }
             return@OnItemSelectedListener true
         })

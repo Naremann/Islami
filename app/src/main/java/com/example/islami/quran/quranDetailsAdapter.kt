@@ -7,22 +7,22 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.islami.R
 
-class quranDetailsAdapter() : RecyclerView.Adapter<quranDetailsAdapter.quranViewHolder>() {
-   var listData : List<String>? = null
+class QuranDetailsAdapter: RecyclerView.Adapter<QuranDetailsAdapter.QuranViewHolder>() {
+   private var listData : List<String>? = null
 
 
-    class quranViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        var suraContent : TextView = itemView.findViewById(R.id.suraContentItem_tv)
+    class QuranViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+        var suratContent : TextView = itemView.findViewById(R.id.suraContentItem_tv)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): quranViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuranViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.sura_content_item,parent,false)
-        return quranViewHolder(view)
+        return QuranViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: quranViewHolder, position: Int) {
-        val suraContentItem : String? = listData?.get(position)
-        holder.suraContent.setText(suraContentItem)
+    override fun onBindViewHolder(holder: QuranViewHolder, position: Int) {
+        val suratContentItem : String? = listData?.get(position)
+        holder.suratContent.text = suratContentItem
 
     }
 
