@@ -6,13 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.islami.R
 
 class QuranFragment : Fragment() {
     lateinit var recyclerView: RecyclerView
-    lateinit var adapter: QuranAdapter
+    private lateinit var adapter: QuranAdapter
     lateinit var list: List<String>
 
     override fun onCreateView(
@@ -31,7 +30,7 @@ class QuranFragment : Fragment() {
         recyclerView.adapter = adapter
         adapter.onItemClick = object : QuranAdapter.OnClickItemListener{
             override fun onItemClick(position: Int, item: String) {
-                startSuraDetails(position , item)
+                startSuratDetails(position , item)
             }
         }
 
@@ -40,15 +39,15 @@ class QuranFragment : Fragment() {
 
 
 
-    private fun startSuraDetails(position: Int, item: String) {
-        val intent = Intent(requireContext() , SuraDetailsActivity :: class.java)
-        intent.putExtra(ConstantVaribles.suraNameText,item)
-        intent.putExtra(ConstantVaribles.suraPosition,position)
+    private fun startSuratDetails(position: Int, item: String) {
+        val intent = Intent(requireContext() , SuratDetailsActivity :: class.java)
+        intent.putExtra(ConstantVaribles.SURAT_NAME_Text,item)
+        intent.putExtra(ConstantVaribles.SURAT_POSITION,position)
         startActivity(intent)
 
     }
 
-    fun createData() {
+    private fun createData() {
         list = listOf("الفاتحه","البقرة","آل عمران","النساء","المائدة","الأنعام","الأعراف","الأنفال","التوبة","يونس","هود"
             ,"يوسف","الرعد","إبراهيم","الحجر","النحل","الإسراء","الكهف","مريم","طه","الأنبياء","الحج","المؤمنون"
             ,"النّور","الفرقان","الشعراء","النّمل","القصص","العنكبوت","الرّوم","لقمان","السجدة","الأحزاب","سبأ"

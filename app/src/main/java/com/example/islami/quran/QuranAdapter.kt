@@ -6,26 +6,25 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.islami.R
-import java.util.zip.Inflater
 
-class QuranAdapter(var listData : List<String>) : RecyclerView.Adapter<QuranAdapter.quranViewHolder>() {
+class QuranAdapter(private var listData : List<String>) : RecyclerView.Adapter<QuranAdapter.QuranViewHolder>() {
     lateinit var onItemClick : OnClickItemListener
 
 
-    class quranViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        var suraName : TextView = itemView.findViewById(R.id.suraName_tv)
+    class QuranViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+        var suratName : TextView = itemView.findViewById(R.id.suraName_tv)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): quranViewHolder {
-        var view = LayoutInflater.from(parent.context).inflate(R.layout.sura_name_item,parent,false)
-        return quranViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuranViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.sura_name_item,parent,false)
+        return QuranViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: quranViewHolder, position: Int) {
-        var suraNameItem : String = listData.get(position)
-        holder.suraName.setText(suraNameItem)
+    override fun onBindViewHolder(holder: QuranViewHolder, position: Int) {
+        val suratNameItem : String = listData[position]
+        holder.suratName.text = suratNameItem
         holder.itemView.setOnClickListener {
-            onItemClick.onItemClick(position, suraNameItem )
+            onItemClick.onItemClick(position, suratNameItem )
         }
 
     }

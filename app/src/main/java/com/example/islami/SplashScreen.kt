@@ -16,7 +16,7 @@ class SplashScreen : AppCompatActivity() {
 
             }
 
-        },9000)
+        },2000)
     }
 
     private fun startHomeActivity() {
