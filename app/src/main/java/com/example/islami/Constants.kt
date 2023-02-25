@@ -1,5 +1,7 @@
 package com.example.islami
 
+import android.net.ConnectivityManager
+
 object Constants {
     lateinit var NETWORK_HANDLER : NetworkHandler
     var iS_PLAY : Boolean = true
@@ -8,4 +10,5 @@ object Constants {
     var AUDIO_INDEX = 0
     var READER_NAME :String?=null
     var SURAT_TEXT = "سورة"
+    var CONNECTIVITY_MANAGER:ConnectivityManager?=null
 }

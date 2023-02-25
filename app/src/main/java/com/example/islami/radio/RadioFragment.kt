@@ -18,9 +18,12 @@ import com.example.islami.api.ApiManager
 import com.example.islami.database.MyDatabase
 import com.example.islami.model.RadiosItem
 import com.example.islami.repos.radio.*
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class RadioFragment : Fragment() {
+@AndroidEntryPoint
+class RadioFragment() : Fragment() {
     private var audioList: List<RadiosItem?>? = null
     private lateinit var playIcon: ImageView
     private lateinit var pauseIcon: ImageView
@@ -32,9 +35,7 @@ class RadioFragment : Fragment() {
     private lateinit var url: String
     private lateinit var reader: String
     private var mediaPlayer: MediaPlayer? = null
-    private var quranAudioRepository: QuranAudioRepository
-    private var offlineDataSource: QuranAudioOfflineDAtaSource
-    private var onlineDataSource: QuranAudioOnlineDAtaSource
+    @Inject lateinit var quranAudioRepository: QuranAudioRepository
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -135,7 +136,7 @@ class RadioFragment : Fragment() {
         playMediaPlayer(url)
     }
 
-    init {
+   /* init {
         Log.e("network", "isOnline" + Constants.NETWORK_HANDLER.isOnline())
         onlineDataSource = QuranAudioOnlineDAtaSourceImp(ApiManager.getApis())
         offlineDataSource = QuranAudioOfflineDAtaSourceImp(MyDatabase.getInstance())
@@ -144,7 +145,7 @@ class RadioFragment : Fragment() {
             offlineDataSource,
             Constants.NETWORK_HANDLER
         )
-    }
+    }*/
 
     private fun initViews() {
         playIcon = requireView().findViewById(R.id.stop_ic)

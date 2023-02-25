@@ -9,7 +9,9 @@ import com.example.islami.radio.RadioFragment
 import com.example.islami.sebha.SebhaFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
     lateinit var bottomNavigationView: BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,18 +20,20 @@ class HomeActivity : AppCompatActivity() {
         bottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigationView.setOnItemSelectedListener(NavigationBarView.OnItemSelectedListener {
                 menuItem->
-            if (menuItem.itemId == R.id.ic_quran_nav) {
-                startFragment(QuranFragment())
+            when (menuItem.itemId) {
+                R.id.ic_quran_nav -> {
+                    startFragment(QuranFragment())
 
-            }
-            else if (menuItem.itemId == R.id.ic_hadith_nav) {
-                startFragment(HadithFragment())
-            }
-            else if (menuItem.itemId == R.id.ic_sebha_nav) {
-                startFragment(SebhaFragment())
-            }
-            else if (menuItem.itemId == R.id.ic_radio_nav) {
-                startFragment(RadioFragment())
+                }
+                R.id.ic_hadith_nav -> {
+                    startFragment(HadithFragment())
+                }
+                R.id.ic_sebha_nav -> {
+                    startFragment(SebhaFragment())
+                }
+                R.id.ic_radio_nav -> {
+                    startFragment(RadioFragment())
+                }
             }
             return@OnItemSelectedListener true
         })
