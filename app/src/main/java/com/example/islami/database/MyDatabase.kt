@@ -10,7 +10,7 @@ import com.example.islami.model.RadiosItem
 abstract class MyDatabase : RoomDatabase() {
     abstract fun userDao(): QuranAudioDao
     companion object{
-        const val DATABASE_NAME = "database"
+        private const val DATABASE_NAME = "database"
         private var database : MyDatabase?=null
         fun init(context: Context){
             if(database == null){

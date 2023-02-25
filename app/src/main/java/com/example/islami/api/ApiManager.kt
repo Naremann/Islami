@@ -6,7 +6,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ApiManager {
     companion object{
         private var retrofit: Retrofit? = null
-        //const val BASE_URL = "http://api.alquran.cloud"
         private const val BASE_URL = "https://mp3quran.net"
         fun getInstance() :Retrofit{
             if(retrofit == null){
